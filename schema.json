@@ -1,9 +1,9 @@
 {
   "type": "object",
   "properties": {
-    "mode": {
-      "description": "Determine production throws or development hints",
-      "enum": ["development", "production"]
+    "hintLevel": {
+      "description": "Determine production throws or development warnings",
+      "enum": ["error", "warning"]
     },
     "env": {
       "description": "Js environment of your bundle code runs",

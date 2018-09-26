@@ -2,10 +2,10 @@ const path = require('path')
 const compiler = require('@webpack-contrib/test-utils')
 
 describe('es-compatible-loader', () => {
-  it('development mode output normal with warnings', async () => {
+  it('hintLevel#warning output normal with warnings', async () => {
     let stats = await compiler(
       'example.js',
-      getLoaderConfig({ mode: 'development' })
+      getLoaderConfig({ hintLevel: 'warning' })
     )
 
     stats = stats.toJson({ errorDetails: false })
@@ -23,10 +23,10 @@ describe('es-compatible-loader', () => {
     expect(output.length).toBeGreaterThan(0)
   })
 
-  it('production mode output empty and throws', async () => {
+  it('hintLevel#error output empty and throws', async () => {
     let stats = await compiler(
       'example.js',
-      getLoaderConfig({ mode: 'production' })
+      getLoaderConfig({ hintLevel: 'error' })
     )
 
     stats = stats.toJson({ errorDetails: false })

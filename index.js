@@ -46,7 +46,7 @@ module.exports = function loader(source) {
         .join(',')
 
       const error = new Error('Found these es6 keywords: ' + keywords)
-      if (options.mode === 'production') {
+      if (options.hintLevel === 'error') {
         this.emitError(error)
         return ''
       }

@@ -1,6 +1,6 @@
 {
   "name": "es-compatible-loader",
-  "description": "es-compatible-loader",
+  "description": "webpack loader for ecmascript compatiblity",
   "keywords": [
     "webpack",
     "wepack loader",
