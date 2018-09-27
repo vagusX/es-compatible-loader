@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: 'circleci/node:latest'
+    working_directory: ~/es-compatible-loader
     steps:
       - checkout
 
