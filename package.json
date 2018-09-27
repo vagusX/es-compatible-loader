@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "eslint index.js test/**/*.js",
     "semantic-release": "semantic-release",
-    "test": "jest --env=node",
+    "test": "jest --env=node --coverage",
     "coverage": "codecov"
   },
   "repository": {
