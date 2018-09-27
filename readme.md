@@ -19,7 +19,7 @@ $ npm install es-compatible-loader --save-dev
   rules: [
     {
       test: /\.js/,
-      include: [/node_modules/, /test/],
+      include: /node_modules/,
       use: {
         loader: 'es-compatible-loader',
         options: {
