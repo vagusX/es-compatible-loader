@@ -29,23 +29,22 @@ const es2015ReservedRegex = es2015Reserved.map(
  * 由于 webpack 可自行处理 import/export 因此可以忽略 import/export/default
  * 出错文件行数
  */
-module.exports = function loader(source) {
+module.exports = function loader (source) {
   const options = getOptions(this)
   validateOpts(schema, options, loaderName)
 
   if (es2015ReservedRegex.some(regex => regex.test(source))) {
-    const tree = esprima.tokenize(source)
+    const tree = esprima.tokenize(source, { loc: true })
     const keywordNodes = tree.filter(n => n.type === 'Keyword')
     const reversedKeywordNodes = keywordNodes.filter(
       n => es2015Reserved.indexOf(n.value) > -1
     )
     if (reversedKeywordNodes.length) {
-      const keywords = reversedKeywordNodes
-        .map(n => n.value)
-        .filter((n, i, arr) => arr.indexOf(n) === i)
-        .join(',')
+      const unexpectedKeywords = reversedKeywordNodes
+        .map(n => `${n.value} at line: ${n.loc.start.line} column: ${n.loc.start.column}`)
+        .join('\n')
 
-      const error = new Error('Found these es6 keywords: ' + keywords)
+      const error = new Error(`Found these es6 keywords: ${unexpectedKeywords}`)
       if (options.hintLevel === 'error') {
         this.emitError(error)
         return ''
