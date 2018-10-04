@@ -6,7 +6,7 @@ const { name: loaderName } = require('./package.json')
 const schema = require('./schema.json')
 
 const es2015Reserved = [
-  // 'default', 'import', 'export',
+  // 'default', 'import', 'export', // webpack handle module solution internally
   'class',
   'const',
   'extends',
