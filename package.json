@@ -41,7 +41,7 @@
     "prettier": "^1.14.3",
     "query-string": "^6.1.0",
     "semantic-release": "^15.9.16",
-    "webpack": "^4.19.1"
+    "webpack": "^4.37.0"
   },
   "dependencies": {
     "esprima": "^4.0.1",
